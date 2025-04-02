@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mt</groupId>
+  <artifactId>MavenEnterpriseApplication</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0</version>
+  <name>Maven Enterprise Application</name>
+  <url>https://maven.apache.org</url>
+
+  <modules>
+    <module>MavenEnterpriseApp-ear</module>
+    <module>MavenEnterpriseApp-web</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <sonar.host.url>https://localhost:9000/</sonar.host.url>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Define your dependencies here with secure versions -->
+    </dependencies>
+  </dependencyManagement>
+
+  <pluginManagement>
+    <plugins>
+      <!-- Define your plugin versions here for security -->
+    </plugins>
+  </pluginManagement>
+
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <sonar.host.url>https://localhost:9000/</sonar.host.url>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>prod</id>
+      <properties>
+        <sonar.host.url>https://prod.sonarqube.com/</sonar.host.url>
+      </properties>
+    </profile>
+  </profiles>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>
