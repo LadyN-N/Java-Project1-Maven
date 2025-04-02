@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mt</groupId>
+    <artifactId>MavenStandaloneApplication</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>MavenStandaloneApplication</name>
+
+    <description>Maven Standalone Application</description>
+
+    <properties>
+        <!-- Secure SonarQube credentials via environment variables -->
+        <sonar.host.url>${env.SONAR_HOST_URL}</sonar.host.url> <!-- Securely pass the host URL via an environment variable -->
+        <sonar.login>${env.SONAR_LOGIN}</sonar.login> <!-- Securely pass the SonarQube login token via an environment variable -->
+        <sonar.password>${env.SONAR_PASSWORD}</sonar.password> <!-- Securely pass the SonarQube password via an environment variable -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- Use a more recent version of JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version> <!-- Latest version of JUnit 4 -->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Centralized dependency version management -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version> <!-- Version for all JUnit dependencies -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Source Control Management -->
+    <scm>
+        <connection>scm:git:https://github.com/LadyN-N/MavenStandaloneApplication</connection>
+        <developerConnection>scm:git:https://github.com/LadyN-N/MavenStandaloneApplication.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/LadyN-N/MavenStandaloneApplication</url>
+    </scm>
+
+    <!-- Issue Management -->
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/LadyN-N/MavenStandaloneApplication/issues</url>
+    </issueManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version> <!-- Stable version, check for latest -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.mt.sample.HelloWorld</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
