@@ -1,22 +1,13 @@
-package com.mt.sample;
+package com.mt.sample.test;
 
-/**
- * Hello world!
- *
- */
-import java.util.Date;
+import com.mt.sample.HelloWorld;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HelloWorld {
-
-	public static void main(String[] args) {
-		System.out.println("Hello Welcome to Maven Build Tool !! Today Date is:  " + getLocalCurrentDate());
-
-	}
-
-	private static Date getLocalCurrentDate() {
-		String m = "KGTek Solutions";
-		return new Date();
-
-	}
-
+public class HelloWorldTest {
+    @Test
+    public void testSayHello() {
+        HelloWorld hw = new HelloWorld();
+        assertEquals("Hello, World!", hw.sayHello());
+    }
 }
